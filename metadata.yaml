@@ -1,0 +1,38 @@
+name: "Spark"
+maintainer: "Flexiant Ltd."
+email: "contact@flexiant.com"
+description: "Installs/Configures Spark Example via KDeploy"
+version: "0.0.1"
+source: "https://github.com/flexiant/kubeware-spark"
+issues: "https://github.com/flexiant/kubeware-spark/issues"
+
+
+svc:
+  spark-master: "spark-master-service.yaml"
+  spark-webui: "spark-webui.yaml"
+
+rc:
+  spark-master: "spark-master-controller.yaml"
+  spark-worker: "spark-worker-controller.yaml"
+
+
+attributes:
+  svc:
+    spark-webui:
+      balancer:
+        description: "Defines how we want to expose the Spark Webui Service"
+        default: LoadBalancer
+        required: true
+      port:
+        description: "Defines expose port for the Spark Webui Service"
+        default: 80
+        required: true
+  rc:
+    spark-master:
+      number:
+        default: 1
+        required: true
+    spark-worker:
+      number:
+        default: 3
+        required: true

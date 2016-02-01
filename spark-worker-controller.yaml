@@ -1,0 +1,23 @@
+{{ $replicas := attr "rc/spark-worker/number" }}
+
+kind: ReplicationController
+apiVersion: v1
+metadata:
+  name: spark-worker-controller
+spec:
+  replicas: {{ $redis_master_replicas }}
+  selector:
+    component: spark-worker
+  template:
+    metadata:
+      labels:
+        component: spark-worker
+    spec:
+      containers:
+        - name: spark-worker
+          image: gcr.io/google_containers/spark-worker:1.5.1_v2
+          ports:
+            - containerPort: 8081
+          resources:
+            requests:
+              cpu: 100m
