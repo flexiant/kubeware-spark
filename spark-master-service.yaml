@@ -7,4 +7,4 @@ spec:
     - port: 7077
       targetPort: 7077
   selector:
-    component: spark-master
+    name: spark-master

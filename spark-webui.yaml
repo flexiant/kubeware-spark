@@ -11,4 +11,4 @@ spec:
     - port: {{ $frontend_port }}
       targetPort: 8080
   selector:
-    component: spark-master
+    name: spark-master
