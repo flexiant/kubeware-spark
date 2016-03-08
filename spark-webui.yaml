@@ -1,14 +1,11 @@
-{{ $frontend_balancer  := attr "svc/spark-webui/balancer" }}
-{{ $frontend_port      := attr "svc/spark-webui/port" }}
-
 kind: Service
 apiVersion: v1
 metadata:
   name: spark-webui
 spec:
-  type: {{ $frontend_balancer }}
+  type: {{ svc.spark-webui.balancer }}
   ports:
-    - port: {{ $frontend_port }}
+    - port: {{ svc.spark-webui.port }}
       targetPort: 8080
   selector:
     name: spark-master

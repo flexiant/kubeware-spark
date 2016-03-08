@@ -1,11 +1,9 @@
-{{ $replicas := attr "rc/spark-worker/number" }}
-
 kind: ReplicationController
 apiVersion: v1
 metadata:
   name: spark-worker-controller
 spec:
-  replicas: {{ $replicas }}
+  replicas: {{ rc.spark-worker.number }}
   selector:
     name: spark-worker
   template:

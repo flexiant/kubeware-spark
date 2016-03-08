@@ -1,11 +1,9 @@
-{{ $replicas := attr "rc/spark-master/number" }}
-
 kind: ReplicationController
 apiVersion: v1
 metadata:
   name: spark-master-controller
 spec:
-  replicas: {{ $replicas }}
+  replicas: {{ rc.spark-master.number }}
   selector:
     name: spark-master
   template:
