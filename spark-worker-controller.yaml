@@ -1,7 +1,7 @@
 kind: ReplicationController
 apiVersion: v1
 metadata:
-  name: spark-worker-controller
+  name: spark-worker
 spec:
   replicas: {{ rc.spark-worker.number }}
   selector:
